@@ -27,11 +27,13 @@ Things you may want to cover:
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
 | name               | string | null: false |
-| email              | string | null: false |
-| password           | string | null: false |
-| hiraganna_name     | string | null: false |
-| katakana_name     | string | null: false |
-| birthday          | string | null: false | 
+| email              | string | null: false unique:true|
+| encrypted_password | string | null: false |
+| kanji_first_name     | string | null: false |
+| kanji_last_name     | string | null: false |
+| katakana_first_name | string | null: false |
+| katakana_last_name  | string | null: false |
+| birthday          |date | null: false | 
 ・
 
 
@@ -39,64 +41,47 @@ Things you may want to cover:
 
  has_many : :furima
 - has_many :purchases
-- has_many :Listing,through: furima
-  has_many :comments
+- has_many :Listing
 
 
 ## purchasesテーブル
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-| name   | string | null: false |
-
+| test   | string | null: false |
+| payment_amount | string | null: false |
+| expiration_date | string | null: false |
+| security_code| string | null: false |
+| postal_code| string | null: false |
+| prefectures | string | null: false |
+| municipality | string | null: false |
+|address| string | null: false |
+| building_name | string | null: false |
+|phone_number| string | null: false |
+| users   | references | null: false, foreign_key: true |
 ### Association
+
 
 - has_many :listing
-- has_many :users, through: furima
-- has_many :comments
-
-## furima テーブル
-
-| Column | Type       | Options                        |
-| ------ | ---------- | ------------------------------ |
-| purchases   | references | null: false, foreign_key: true |
-| listings  | references | null: false, foreign_key: true |
-|  users  | references | null: false, foreign_key: true |
-| comments | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :purchases
-- belongs_to :listings 
-  belongs_to :users
-  belongs_to :comments
-
-
-# commentsテーブル
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| purchases | string     |                                |
-| listings   | references | null: false, foreign_key: true |
-| users   | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :users
-- belongs_to :listings 
-  belongs_to :purchases
+- has_many :users
 
 
 # listingテーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| purchases | string     |                                |
-| commets  | references | null: false, foreign_key: true |
+| product_name| string |null: false, foreign_key: true |
+| product_image | string |null: false, foreign_key: true |
+|product_description| string |null: false, foreign_key: true |
+| category | string |null: false, foreign_key: true |
+| product_condition| string |null: false, foreign_key: true |
+| shipping_charges| string |null: false, foreign_key: true |
+|shipping_area| string |null: false, foreign_key: true |
+| days_to_ship| string |null: false, foreign_key: true |
+| selling_price| string |null: false, foreign_key: true |
 | users   | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :users
-- belongs_to :comments 
   belongs_to :purchases
