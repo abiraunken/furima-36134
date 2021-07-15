@@ -38,14 +38,23 @@ Things you may want to cover:
 
 
 ### Association
-
- has_many : :furima
 - has_many :purchases
 - has_many :Listing
 
 
 ## purchasesテーブル
 
+| Column | Type   | Options     |
+| ------ | ------ | ----------- |
+| users | refarences| null: false |
+| purchases |refarences | null: false |
+
+### Association
+
+- has_many :listing
+- has_many :users
+
+## Addresesテーブル
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
 | test   | string | null: false |
@@ -55,16 +64,13 @@ Things you may want to cover:
 | postal_code| string | null: false |
 | prefectures | string | null: false |
 | municipality | string | null: false |
-|address| string | null: false |
+| addreses | string | null: false |
 | building_name | string | null: false |
 |phone_number| string | null: false |
-| users   | references | null: false, foreign_key: true |
-### Association
 
 
 - has_many :listing
 - has_many :users
-
 
 # listingテーブル
 
@@ -79,7 +85,7 @@ Things you may want to cover:
 |shipping_area| string |null: false, foreign_key: true |
 | days_to_ship| string |null: false, foreign_key: true |
 | selling_price| string |null: false, foreign_key: true |
-| users   | references | null: false, foreign_key: true |
+| users | references | null: false, foreign_key: true |
 
 ### Association
 
