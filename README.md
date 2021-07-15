@@ -22,7 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-## users テーブル
+## Users テーブル
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
@@ -42,7 +42,7 @@ Things you may want to cover:
 - has_many :products
 
 
-## purchasesテーブル
+## Purchasesテーブル
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
@@ -55,11 +55,11 @@ Things you may want to cover:
 - belongs_to :user
   has_one :location
 
-## Locationテーブル
+## Locationsテーブル
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
 | postal_code| string | null: false |
-| prefectures | integer | null: false |
+| prefecture_id | integer | null: false |
 | municipality | string | null: false |
 | addrese | string | null: false |
 | building_name | string |        |
@@ -69,7 +69,7 @@ Things you may want to cover:
 - belongs_to :purchase
  
 
-# productsテーブル
+## Productsテーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
