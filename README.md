@@ -53,7 +53,7 @@ Things you may want to cover:
 
 - belongs_to :product
 - belongs_to :user
-  has_one :address
+  has_one :location
 
 ## Locationテーブル
 | Column | Type   | Options     |
