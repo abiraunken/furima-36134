@@ -100,3 +100,5 @@ Things you may want to cover:
 - belongs_to :users
 - belongs_to :comments 
   belongs_to :purchases
+
+
