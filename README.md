@@ -46,8 +46,8 @@ Things you may want to cover:
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-| user | refarences| null: false |
-| product |refarences | null: false |
+| user | refarences| null: false,foreign_key: true|
+| product |refarences | null: false,foreign_key: true |
 
 ### Association
 
@@ -55,16 +55,16 @@ Things you may want to cover:
 - belongs_to :user
   has_one :address
 
-## Addresesテーブル
+## Locationテーブル
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
 | postal_code| string | null: false |
-| prefectures | string | null: false |
+| prefectures | integer | null: false |
 | municipality | string | null: false |
 | addreses | string | null: false |
-| building_name | string | null: false |
+| building_name | string |        |
 |phone_number| string | null: false |
-|purchase|refarences | null: false |
+|purchase|refarences | null: false ,foreign_key: true|
 
 - belongs_to :purchase
  
@@ -73,16 +73,16 @@ Things you may want to cover:
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| product_name | string | null: false, foreign_key: true |
-| product_image | string| null: false, foreign_key: true |
-| product_description| text |null: false, foreign_key: true |
-| category | string |null: false, foreign_key: true |
-| product_condition| string |null: false, foreign_key: true |
-| shipping_charges| string |null: false, foreign_key: true |
-|shipping_area| string |null: false, foreign_key: true |
-| days_to_ship| string |null: false, foreign_key: true |
-| selling_price| integer |null: false, foreign_key: true |
-| user | references | null: false, foreign_key: true |
+| product_name | string | null: false|
+| product_image | string| null: false|
+| product_description| text |null: false|
+| category | string |null: false|
+| product_condition| string |null: false|
+| shipping_charges| string |null: false|
+|shipping_area| string |null: false |
+| days_to_ship| string |null: false|
+| selling_price| integer |null: false|
+| user | references | null: false|
 
 ### Association
 
