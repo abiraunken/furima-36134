@@ -39,55 +39,52 @@ Things you may want to cover:
 
 ### Association
 - has_many :purchases
-- has_many :Listing
+- has_many :products
 
 
 ## purchasesテーブル
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-| users | refarences| null: false |
-| purchases |refarences | null: false |
+| user | refarences| null: false |
+| product |refarences | null: false |
 
 ### Association
 
-- has_many :listing
-- has_many :users
+- belongs_to :product
+- belongs_to :user
+  has_one :address
 
 ## Addresesテーブル
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-| test   | string | null: false |
-| payment_amount | string | null: false |
-| expiration_date | string | null: false |
-| security_code| string | null: false |
 | postal_code| string | null: false |
 | prefectures | string | null: false |
 | municipality | string | null: false |
 | addreses | string | null: false |
 | building_name | string | null: false |
 |phone_number| string | null: false |
+|purchase|refarences | null: false |
 
+- belongs_to :purchase
+ 
 
-- has_many :listing
-- has_many :users
-
-# listingテーブル
+# productsテーブル
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| product_name| string |null: false, foreign_key: true |
-| product_image | string |null: false, foreign_key: true |
-|product_description| string |null: false, foreign_key: true |
+| product_name | string | null: false, foreign_key: true |
+| product_image | string| null: false, foreign_key: true |
+| product_description| text |null: false, foreign_key: true |
 | category | string |null: false, foreign_key: true |
 | product_condition| string |null: false, foreign_key: true |
 | shipping_charges| string |null: false, foreign_key: true |
 |shipping_area| string |null: false, foreign_key: true |
 | days_to_ship| string |null: false, foreign_key: true |
-| selling_price| string |null: false, foreign_key: true |
-| users | references | null: false, foreign_key: true |
+| selling_price| integer |null: false, foreign_key: true |
+| user | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-  belongs_to :purchases
+- belongs_to :user
+  has_one :purchase
