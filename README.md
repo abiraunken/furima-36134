@@ -61,7 +61,7 @@ Things you may want to cover:
 | postal_code| string | null: false |
 | prefecture_id | integer | null: false |
 | municipality | string | null: false |
-| addrese | string | null: false |
+| address| string | null: false |
 | building_name | string |        |
 |phone_number| string | null: false |
 |purchase|refarences | null: false ,foreign_key: true|
@@ -78,7 +78,7 @@ Things you may want to cover:
 | category_id | integer |null: false|
 | product_condition_id| integer |null: false|
 | shipping_charges_id| integer |null: false|
-|shipping_area_id| integer |null: false |
+|prefecture_id | integer |null: false |
 | days_to_ship_id| integer |null: false|
 | selling_price| integer |null: false|
 | user | references | null: false, foreign_key: true |
