@@ -46,8 +46,8 @@ Things you may want to cover:
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-| user | refarences| null: false,foreign_key: true|
-| product |refarences | null: false,foreign_key: true |
+| user | references| null: false,foreign_key: true|
+| product |references | null: false,foreign_key: true |
 
 ### Association
 
@@ -64,7 +64,7 @@ Things you may want to cover:
 | address| string | null: false |
 | building_name | string |        |
 |phone_number| string | null: false |
-|purchase|refarences | null: false ,foreign_key: true|
+|purchase|references | null: false ,foreign_key: true|
 
 - belongs_to :purchase
  
