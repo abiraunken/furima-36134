@@ -1,8 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
-end
+  # pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    @user = FactoryBot.build(:user)
+  end
 
 it 'ニックネームが必須であること。' do
         expect(@user).to be_valid
@@ -48,10 +50,9 @@ it 'ニックネームが必須であること。' do
     end
 
     it 'パスワードとパスワード（確認）は、値の一致が必須であること。' do
-      @user.save
-      another_user = FactoryBot.build(:user, email: @user.email)
-      another_user.valid?
-      expect(another_user.errors.full_messages).to include('"Password has already been taken')
+      @user.password = '123456'
+      @user.password_confirmation = '1234567'
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
-  end
 end
