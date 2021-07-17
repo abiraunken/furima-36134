@@ -17,12 +17,6 @@ context '内容に問題がある場合' do
       @user.valid?
       expect(@user.errors.full_messages).to include("Name can't be blank")
   end
-    
-      it 'ニックネームが必須であること。' do
-        @user.name = ''
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Name can't be blank")
-      end
   
       it 'メールアドレスが必須であること。' do
         @user.email = ''
