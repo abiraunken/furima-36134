@@ -5,11 +5,19 @@ RSpec.describe User, type: :model do
     @user = FactoryBot.build(:user)
   end
 
-      it '全ての情報があれば登録できる' do
+  context '内容に問題ない場合' do
+    it '全ての情報があれば登録できる' do
         expect(@user).to be_valid
-      end
+    end
+end
     
-      
+context '内容に問題がある場合' do
+  it 'ニックネームが必須であること。' do
+      @user.name = ''
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Name can't be blank")
+  end
+    
       it 'ニックネームが必須であること。' do
         @user.name = ''
         @user.valid?
@@ -51,8 +59,20 @@ RSpec.describe User, type: :model do
         it 'パスワードは、半角英数字混合での入力が必須であること' do
           @user.password = 'F９JIJ０'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password is valid")
+      expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
     end
+
+    it 'パスワードは、半角英数字混合での入力が必須であること（数字のみで通らないこと）' do
+      @user.password = '123456'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('"Password には英字と数字の両方を含めて設定してください ')
+      end
+      
+      it 'パスワードは、半角英字混合での入力が必須であること（英字のみで通らないこと）' do
+        @user.password = 'abcdef'
+      @user.valid?
+      expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
+      end
 
     it 'パスワードとパスワード（確認）は、値の一致が必須であること。' do
       @user.password = '123456'
@@ -93,6 +113,18 @@ RSpec.describe User, type: :model do
 
     it 'お名前は全角（名前）カタカナ以外では通らない' do
       @user.katakana_last_name= "aa"
+    @user.valid?
+    expect(@user.errors.full_messages).to include("Katakana last name 全角カタカナを使用してください")
+    end
+
+    it 'お名前は全角（名字)ひらがなでは通らない' do
+      @user.katakana_first_name="ささき" 
+    @user.valid?
+    expect(@user.errors.full_messages).to include("Katakana first name 全角カタカナを使用してくださ")
+    end
+
+    it 'お名前は全角（名前）ひらがなでは通らない' do
+      @user.katakana_last_name= "ゆうだい"
     @user.valid?
     expect(@user.errors.full_messages).to include("Katakana last name 全角カタカナを使用してください")
     end
