@@ -33,7 +33,7 @@ Things you may want to cover:
 | kanji_last_name     | string | null: false |
 | katakana_first_name | string | null: false |
 | katakana_last_name  | string | null: false |
-| birthday            |date | null: false | 
+| birthday          |date | null: false | 
 ・
 
 
