@@ -141,4 +141,3 @@ it '生年月日が必須であること。' do
 @user.valid?
 expect(@user.errors.full_messages).to include("Birthday can't be blank")
 end
-end

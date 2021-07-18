@@ -5,7 +5,7 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.text :product_description
       t.integer :category_id
       t.integer :product_condition_id
-      t.integer :shipping_charges_id
+      t.integer :shipping_charge_id
       t.integer :prefecture_id 
       t.integer :days_to_ship_id
       t.integer :selling_price
