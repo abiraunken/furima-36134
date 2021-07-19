@@ -9,6 +9,7 @@ class Product < ApplicationRecord
   belongs_to :days_to_ship
 #空の投稿を保存できないようにする
 with_options presence: true do
+validates :image
 validates :product_name
 validates :product_description
 validates :category_id

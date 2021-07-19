@@ -5,7 +5,12 @@ window.addEventListener('load', () => {
      console.log(inputValue);
 
      const addTaxDom = document.getElementById("add-tax-price");
-    addTaxDom.innerHTML = inputValue*0.1
+     const kokotax =inputValue*0.1
+    addTaxDom.innerHTML =  kokotax
+  
 
+    const  Papatax= document.getElementById("profit");
+      const mamatax = inputValue - kokotax
+      Papatax.innerHTML=mamatax
   })
 });
