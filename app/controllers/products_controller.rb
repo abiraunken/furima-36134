@@ -3,7 +3,6 @@ before_action :authenticate_user!,except: [:index]
 
 def index
   @products = Product.all
-
 end
 
 def new
@@ -11,7 +10,6 @@ def new
 end
 
 def create
-
 @product = Product.new(product_params)
 if @product.save
   redirect_to root_path
