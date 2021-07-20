@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
   
 
   def move_to_index
-    if user_signed_in? && current_user.id != @product.user.id
+    if current_user.id != @product.user.id
       # 「もし投稿者とログインしているユーザーが違う場合」
       redirect_to action: :index
     end
