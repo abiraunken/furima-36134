@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!,except: [:index,:show] 
-  before_action :set_product, only: [:update,:edit,:show]
+  before_action :set_product, only: [:update,:edit,:show,:destroy]
   before_action :move_to_index, except: [:new,:create,:index, :show]
 
   def index
@@ -24,7 +24,6 @@ class ProductsController < ApplicationController
   end
 
  def destroy
-  @product = Product.find(params[:id])
   @product.destroy
   redirect_to root_path
 end
