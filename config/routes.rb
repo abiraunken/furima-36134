@@ -4,5 +4,5 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :products,  [:index, :new, :create,:destroy, :edit, :update, :show]
+  resources :products
 end
