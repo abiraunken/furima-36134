@@ -22,6 +22,13 @@ def show
    @product = Product.find(params[:id])
  end
 
+ def destroy
+  @product = Product.find(params[:id])
+  @product.destroy
+  redirect_to root_path
+end
+
+
 private
 def product_params
   params.require(:product).permit(:image,:product_name, :product_description,:category_id , :product_condition_id,:shipping_charge_id,:prefecture_id,:days_to_ship_id,:selling_price).merge(user_id: current_user.id)
