@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
 before_action :authenticate_user!,except: [:index] 
 
 def index
-  @product = Product.all
+  @products = Product.includes(:user).order("created_at DESC")
 end
 
 def new
@@ -10,7 +10,6 @@ def new
 end
 
 def create
-
 @product = Product.new(product_params)
 if @product.save
   redirect_to root_path
