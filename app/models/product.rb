@@ -7,7 +7,7 @@ class Product < ApplicationRecord
   belongs_to :product_condition
   belongs_to :prefecture
   belongs_to :days_to_ship
-  belongs_to :users
+  belongs_to :user
 
   with_options presence: true do
     validates :image
