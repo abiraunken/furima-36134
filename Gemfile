@@ -65,3 +65,5 @@ gem 'active_hash'
 gem 'devise'
 
 gem 'pry-rails'
+
+gem 'payjp'
