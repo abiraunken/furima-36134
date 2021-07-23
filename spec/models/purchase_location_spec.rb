@@ -9,7 +9,13 @@ before do
       sleep(1)
  end
 
+ context 'ユーザ登録ができる時' do
+  it '全ての情報があれば登録できる'  do
+    expect(@purchase_location).to be_valid
+  end
+end
 
+context 'ユーザ登録ができない時' do
     it '郵便番号が必須であること。' do
       @purchase_location.postal_code  = ''
       @purchase_location.valid?
@@ -42,10 +48,9 @@ before do
     end
 
     it '建物名がないこと。'do
+    @purchase_location.building_name = ''
     expect(@purchase_location).to be_valid
   end
-
-
 
     it '電話番号が必須であること。' do
       @purchase_location.phone_number  = ''
@@ -66,4 +71,28 @@ before do
       expect(@purchase_location.errors.full_messages
       ).to include("Phone number is too long (maximum is 11 characters)")
     end
+
+    it '電話番号は、数値以外の値が入力された場合購入できない' do
+      @purchase_location.phone_number  = 'freqwerff'
+      @purchase_location.valid?
+      expect(@purchase_location.errors.full_messages).to include("Phone number is not a number")
+    end
+
+    it 'token がnilの場合購入できない' do
+      @purchase_location.phone_number  = nil
+      @purchase_location.valid?
+      expect(@purchase_location.errors.full_messages).to include("Token can't be blank")
+  end
+
+  it 'user_id がnilの場合購入できない' do
+    @purchase_location.phone_number  = nil
+    @purchase_location.valid?
+    expect(@purchase_location.errors.full_messages).to include("User_id can't be blank")
+end
+
+it 'product_id がnilの場合購入できない' do
+  @purchase_location.phone_number  =nil
+  @purchase_location.valid?
+  expect(@purchase_location.errors.full_messages).to include("Product_id can't be blank")
+end
 end

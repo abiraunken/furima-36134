@@ -4,12 +4,10 @@ class PurchasesController < ApplicationController
 
 
   def index
-    @product = Product.find(params[:product_id])
     @purchase_location= PurchaseLocation.new
   end
 
   def create
-    @product = Product.find(params[:product_id])
     @purchase_location = PurchaseLocation.new(purchase_params)
     if @purchase_location.valid?
       pay_item

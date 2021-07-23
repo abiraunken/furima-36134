@@ -26,19 +26,15 @@
       </span>
     </div>
 
-   
-<%if user_signed_in? == @product.purchase.id%>
+<%if user_signed_in? && @product.purchase == nil %>
   <%if current_user==@product.user%>
     <%= link_to "商品の編集",  edit_product_path(@product.id), method: :get, class: "item-red-btn" %>
     <p class="or-text">or</p>
     <%= link_to "削除", product_path, method: :delete, class:"item-destroy" %>
     <%else%>
-    <%# 商品が売れていない場合はこちらを表示しましょう %>
     <%= link_to "購入画面に進む", product_purchases_path(@product.id) ,class:"item-red-btn"%>
-    <%# //商品が売れていない場合はこちらを表示しましょう %>
   <%end%>
-<%end%>
-   
+   <%end%>
 
     <div class="item-explain-box">
       <span><%= @product.product_description %></span>

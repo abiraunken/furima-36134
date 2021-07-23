@@ -11,6 +11,7 @@ class PurchaseLocation
     validates :address
     validates :phone_number,
   length: {minimum:10, maximum:11}
+  validates :phone_number,numericality: {only_integer: true}
   end
   validates :prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
 
