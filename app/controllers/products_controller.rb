@@ -21,6 +21,9 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    if @product.purchase.id
+      redirect_to root_path(params[:id])
+    end
   end
 
  def destroy
@@ -56,6 +59,8 @@ end
     if current_user.id != @product.user.id
       # 「もし投稿者とログインしているユーザーが違う場合」
       redirect_to action: :index
+
+
     end
   end
 end

@@ -8,6 +8,7 @@ class Product < ApplicationRecord
   belongs_to :prefecture
   belongs_to :days_to_ship
   belongs_to :user
+  has_one :purchase
 
   with_options presence: true do
     validates :image

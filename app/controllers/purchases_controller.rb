@@ -1,5 +1,7 @@
 class PurchasesController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, only: :index
+  before_action :move_to_index, only: [:create,:index]
+
 
   def index
     @product = Product.find(params[:product_id])
@@ -32,5 +34,14 @@ class PurchasesController < ApplicationController
       card: purchase_params[:token],    # カードトークン
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
+  end
+
+
+  def move_to_index
+    @product = Product.find(params[:product_id])
+    if current_user.id == @product.user.id ||  @product.purchase.id
+      # 「もし投稿者とログインしているユーザーが違う場合」
+      redirect_to root_path
+    end
   end
 end
