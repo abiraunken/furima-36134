@@ -13,6 +13,11 @@ before do
   it '全ての情報があれば登録できる'  do
     expect(@purchase_location).to be_valid
   end
+
+  it '建物名がないこと。'do
+  @purchase_location.building_name = ''
+  expect(@purchase_location).to be_valid
+end
 end
 
 context 'ユーザ登録ができない時' do
@@ -47,10 +52,7 @@ context 'ユーザ登録ができない時' do
       expect(@purchase_location.errors.full_messages).to include("Address can't be blank") 
     end
 
-    it '建物名がないこと。'do
-    @purchase_location.building_name = ''
-    expect(@purchase_location).to be_valid
-  end
+  
 
     it '電話番号が必須であること。' do
       @purchase_location.phone_number  = ''
