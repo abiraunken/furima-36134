@@ -79,20 +79,21 @@ context 'ユーザ登録ができない時' do
     end
 
     it 'token がnilの場合購入できない' do
-      @purchase_location.phone_number  = nil
+      @purchase_location.token   = nil
       @purchase_location.valid?
       expect(@purchase_location.errors.full_messages).to include("Token can't be blank")
   end
 
   it 'user_id がnilの場合購入できない' do
-    @purchase_location.phone_number  = nil
+    @purchase_location.user_id = nil
     @purchase_location.valid?
-    expect(@purchase_location.errors.full_messages).to include("User_id can't be blank")
+    expect(@purchase_location.errors.full_messages).to include("User can't be blank")
 end
 
 it 'product_id がnilの場合購入できない' do
-  @purchase_location.phone_number  =nil
+  @purchase_location.product_id  =nil
   @purchase_location.valid?
-  expect(@purchase_location.errors.full_messages).to include("Product_id can't be blank")
+  expect(@purchase_location.errors.full_messages).to include("Product can't be blank")
+end
 end
 end
