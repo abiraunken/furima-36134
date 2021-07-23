@@ -9,9 +9,7 @@ class PurchaseLocation
     validates :prefecture_id
     validates :municipality 
     validates :address
-    validates :phone_number,
-  length: {minimum:10, maximum:11}
-  validates :phone_number,numericality: {only_integer: true}
+    validates :phone_number,numericality: {only_integer: true},length: {minimum:10, maximum:11}
   validates :token
   validates :product_id
   end

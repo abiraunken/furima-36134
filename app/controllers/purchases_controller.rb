@@ -37,7 +37,7 @@ class PurchasesController < ApplicationController
 
   def move_to_index
     @product = Product.find(params[:product_id])
-    if current_user.id == @product.user.id ||  @product.purchase.id
+    if current_user.id == @product.user.id ||  @product.purchase.present?
       # 「もし投稿者とログインしているユーザーが違う場合」
       redirect_to root_path
     end
