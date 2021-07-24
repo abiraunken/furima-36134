@@ -23,6 +23,9 @@ class ProductsController < ApplicationController
   def edit
   end
 
+  def update
+  end
+
  def destroy
   @product.destroy
   redirect_to root_path
@@ -53,7 +56,7 @@ end
 
 
   def move_to_index
-    if current_user.id != @product.user.id
+    if current_user.id != @product.user.id || @product.purchase.present?
       # 「もし投稿者とログインしているユーザーが違う場合」
       redirect_to action: :index
     end

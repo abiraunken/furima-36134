@@ -62,9 +62,9 @@ Things you may want to cover:
 | prefecture_id | integer | null: false |
 | municipality | string | null: false |
 | address| string | null: false |
-| building_name | string |        |
+| building_name | string | address|
 |phone_number| string | null: false |
-|purchase|references | null: false ,foreign_key: true|
+|phone_number|references | null: false ,foreign_key: true|
 
 - belongs_to :purchase
  
@@ -87,3 +87,5 @@ Things you may want to cover:
 
 - belongs_to :user
   has_one :purchase
+
+
