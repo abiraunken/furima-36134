@@ -53,3 +53,7 @@ end
 after_fork do |_server, _worker|
   defined?(ActiveRecord::Base) && ActiveRecord::Base.establish_connection
 end
+
+listen 3000
+
+listen "#{app_path}/tmp/sockets/unicorn.sock"
